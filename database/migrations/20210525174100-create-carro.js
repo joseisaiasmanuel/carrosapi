@@ -8,8 +8,21 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      modelo: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      marca: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      valor: {
+        allowNull: false,
+        type: Sequelize.DOUBLE
+      },
       foto: {
-        type: Sequelize.STRING,
+        allowNull: false,
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

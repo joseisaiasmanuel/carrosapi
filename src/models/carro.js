@@ -12,17 +12,19 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+
+
     static async search(query) {
       const limit = query.limit ? parseInt(query.limit) : 20;
       const offset = query.offset ? parseInt(query.limit) : 0
 
       let where = {}
 
-      if (query.nome) where.foto = {
-          [Op.like]: `%${query.foto}%` //filtrando pelo nome
+      if (query.marca) where.marca = {
+          [Op.like]: `%${query.marca}%` //filtrando pela marca
 
       }
-      if (query.foto) where.foto = q.query.foto;
+     
 
       const entities = await Carro.findAndCountAll({
           where: where,
@@ -38,9 +40,17 @@ module.exports = (sequelize, DataTypes) => {
               offset: offset
           }
       };
+  } 
+
+  static async getId(id) {
+    return await Carro.findByPk(id)
   }
+
   };
   Carro.init({
+    modelo: DataTypes.STRING,
+    marca: DataTypes.STRING,
+    valor: DataTypes.DOUBLE,
     foto: DataTypes.STRING
   }, {
     sequelize,

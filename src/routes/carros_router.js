@@ -9,6 +9,7 @@ router.get('/', CarrosController.bindMethod('index'));
 router.get('/:id',  CarrosController.bindMethod('show'));
 //STORE
 router.post('/', CarrosController.bindMethod('store'));
-
+//REMOVE
+router.delete('/:id',CarrosController.bindMethod('remove'));
 
 module.exports = router;
